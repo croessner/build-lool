@@ -68,8 +68,17 @@ upgrade_system () {
 				;;
 			esac
 			;;
-		*)
-			sudo apt-get install npm nodejs-legacy -y
+		Ubuntu)
+			case ${DIST_RELEASE} in
+			16.04)
+				sudo apt-get install npm nodejs-legacy -y
+				;;
+			18.04)
+				sudo apt-get install openjdk-8-jdk -y
+				sudo apt-get remove openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless -y
+				sudo apt-get install npm nodejs -y
+				;;
+			esac
 			;;
 		esac
 
