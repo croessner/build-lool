@@ -39,6 +39,32 @@ get_sources () {
 	cd ${SRC_DIR}/online
 	if [ ! -f "${LOOL_VERSION}.tar.gz" ] ; then wget https://github.com/LibreOffice/online/archive/${LOOL_VERSION}.tar.gz ; fi
 
+	case ${DIST_ID} in
+	Ubuntu)
+		case ${DIST_RELEASE} in
+		18.04)
+			case ${LOC_VERSION} in
+			libreoffice-6.0.*)
+				cd ${SRC_DIR}/${DIST_ID}/${DIST_RELEASE}
+				if [ ! -d "libreoffice-6.0" ] ; then
+					git clone -b ubuntu-bionic-6.0 https://git.launchpad.net/~libreoffice/ubuntu/+source/libreoffice libreoffice-6.0
+				else
+					cd libreoffice-6.0
+					git pull --all
+				fi
+				;;
+			*)
+				;;
+			esac
+			;;
+		*)
+			;;
+		esac
+		;;
+	*)
+		;;
+	esac
+
 	cd ${START_DIR}
 
 	echo

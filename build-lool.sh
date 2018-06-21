@@ -48,6 +48,8 @@ if [ ! -d ${STAMP_DIR} ] ; then mkdir -p ${STAMP_DIR} ; fi
 get_os_release
 test_os_release
 
+if [ ! -d ${SRC_DIR}/${DIST_ID}/${DIST_RELEASE} ] ; then mkdir -p ${SRC_DIR}/${DIST_ID}/${DIST_RELEASE} ; fi
+
 get_config
 show_info
 
